@@ -1,0 +1,180 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\ThePretendCompanyApp\\ThePretendCompanyApp.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\TCPData\\TCPData.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\TCPData\\TCPData.csproj",
+        "projectName": "TCPData",
+        "projectPath": "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\TCPData\\TCPData.csproj",
+        "packagesPath": "C:\\Users\\hugo.hernandez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\TCPData\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\hugo.hernandez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\TCPExtensions\\TCPExtensions.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\TCPExtensions\\TCPExtensions.csproj",
+        "projectName": "TCPExtensions",
+        "projectPath": "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\TCPExtensions\\TCPExtensions.csproj",
+        "packagesPath": "C:\\Users\\hugo.hernandez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\TCPExtensions\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\hugo.hernandez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\ThePretendCompanyApp\\ThePretendCompanyApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\ThePretendCompanyApp\\ThePretendCompanyApp.csproj",
+        "projectName": "ThePretendCompanyApp",
+        "projectPath": "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\ThePretendCompanyApp\\ThePretendCompanyApp.csproj",
+        "packagesPath": "C:\\Users\\hugo.hernandez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\ThePretendCompanyApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\hugo.hernandez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\TCPData\\TCPData.csproj": {
+                "projectPath": "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\TCPData\\TCPData.csproj"
+              },
+              "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\TCPExtensions\\TCPExtensions.csproj": {
+                "projectPath": "C:\\Users\\hugo.hernandez\\Documents\\Projects\\C#\\ThePretendCompanyApp\\TCPExtensions\\TCPExtensions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

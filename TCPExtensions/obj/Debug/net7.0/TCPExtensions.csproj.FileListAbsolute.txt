@@ -1,0 +1,12 @@
+C:\Users\hugo.hernandez\Documents\Projects\C#\ThePretendCompanyApp\TCPExtensions\bin\Debug\net7.0\TCPExtensions.deps.json
+C:\Users\hugo.hernandez\Documents\Projects\C#\ThePretendCompanyApp\TCPExtensions\bin\Debug\net7.0\TCPExtensions.dll
+C:\Users\hugo.hernandez\Documents\Projects\C#\ThePretendCompanyApp\TCPExtensions\bin\Debug\net7.0\TCPExtensions.pdb
+C:\Users\hugo.hernandez\Documents\Projects\C#\ThePretendCompanyApp\TCPExtensions\obj\Debug\net7.0\TCPExtensions.csproj.AssemblyReference.cache
+C:\Users\hugo.hernandez\Documents\Projects\C#\ThePretendCompanyApp\TCPExtensions\obj\Debug\net7.0\TCPExtensions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hugo.hernandez\Documents\Projects\C#\ThePretendCompanyApp\TCPExtensions\obj\Debug\net7.0\TCPExtensions.AssemblyInfoInputs.cache
+C:\Users\hugo.hernandez\Documents\Projects\C#\ThePretendCompanyApp\TCPExtensions\obj\Debug\net7.0\TCPExtensions.AssemblyInfo.cs
+C:\Users\hugo.hernandez\Documents\Projects\C#\ThePretendCompanyApp\TCPExtensions\obj\Debug\net7.0\TCPExtensions.csproj.CoreCompileInputs.cache
+C:\Users\hugo.hernandez\Documents\Projects\C#\ThePretendCompanyApp\TCPExtensions\obj\Debug\net7.0\TCPExtensions.dll
+C:\Users\hugo.hernandez\Documents\Projects\C#\ThePretendCompanyApp\TCPExtensions\obj\Debug\net7.0\refint\TCPExtensions.dll
+C:\Users\hugo.hernandez\Documents\Projects\C#\ThePretendCompanyApp\TCPExtensions\obj\Debug\net7.0\TCPExtensions.pdb
+C:\Users\hugo.hernandez\Documents\Projects\C#\ThePretendCompanyApp\TCPExtensions\obj\Debug\net7.0\ref\TCPExtensions.dll
