@@ -20,8 +20,8 @@ namespace TCPData
                 AnnualSalary = 6699.3m,
                 IsManager = true,
                 DepartmentId = 1
-            };     
-            
+            };
+
             Employee employee2 = new()
             {
                 Id = 2,
@@ -30,8 +30,8 @@ namespace TCPData
                 AnnualSalary = 2899.9m,
                 IsManager = false,
                 DepartmentId = 2
-            };  
-            
+            };
+
             Employee employee3 = new()
             {
                 Id = 3,
@@ -55,7 +55,7 @@ namespace TCPData
             employees.Add(employee);
             employees.Add(employee2);
             employees.Add(employee3);
-            employees.Add(employee4);   
+            employees.Add(employee4);
 
             return employees;
         }
