@@ -6,7 +6,40 @@ List<Employee> employees = Data.GetEmployees();
 List<Department> departments = Data.GetDepartments();
 
 
-// PART 3 LINQ OPERATORS
+// PART 3
+// // LINQ OPERATORS
+
+// GROUP BY OPERATIONS
+var resultGroup = from emp in employees
+                  orderby emp.DepartmentId
+                  group emp by emp.DepartmentId;
+
+foreach (var result in resultGroup)
+{
+    Console.WriteLine($"Department Id: {result.Key} ");
+    foreach(Employee emp in result)
+    {
+        Console.WriteLine($"{emp.FirstName} -  $ {emp.AnnualSalary}");
+    }
+}
+
+// ToLookup Operator
+Console.WriteLine();
+Console.WriteLine("---------------ToLookUp");
+var resultGroupToLookUp =employees.OrderBy(e => e.DepartmentId).ToLookup(x => x.DepartmentId);
+
+
+foreach (var result in resultGroupToLookUp)
+{
+    Console.WriteLine($"Department Id: {result.Key} ");
+    foreach (Employee emp in result)
+    {
+        Console.WriteLine($"{emp.FirstName} -  $ {emp.AnnualSalary}");
+    }
+}
+
+
+// SORTING OPERATIONS
 // METHOD SINTAX 
 Console.WriteLine("METHOD SINTAX - ORDER - THEMBY");
 Console.WriteLine();
