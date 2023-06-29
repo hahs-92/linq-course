@@ -1,4 +1,5 @@
-﻿using TCPData;
+﻿using System.Runtime.Intrinsics.Arm;
+using TCPData;
 using TCPExtensions;
 
 
@@ -7,14 +8,15 @@ using TCPExtensions;
 List<Employee> employees = Data.GetEmployees();
 List<Department> departments = Data.GetDepartments();
 
-// Method Syntaxt - immediate execute
+// Method Syntaxt 
 var results = employees.Select(emp => new
 {
     FullName = emp.FirstName + emp.LastName,
     AnnualSalary = emp.AnnualSalary
 }).Where(e => e.AnnualSalary >= 5000);
 
-foreach(var emp in results)
+
+foreach (var emp in results)
 {
     Console.WriteLine($"{emp.FullName} -  $ {emp.AnnualSalary}");
 }
@@ -24,7 +26,16 @@ foreach(var emp in results)
 // hasta que entra en un ciclo. De esta manera, esta optimizada a diferencia de
 // Method Sintax. Para este ejemplo, cuando agregamos un nuevo employee a la lista
 // cuando el ciclo se ejecuta, tambien incluye el employee nuevo
-
+/*
+ * immediate execute
+var resulQuery = (from emp in employees
+                 where emp.AnnualSalary >= 5000
+                 select new
+                 {
+                     FullName = emp.FirstName + emp.LastName,
+                     emp.AnnualSalary
+                 }).ToList(); // el to list lo vuleve un immediate execute
+*/
 var resulQuery = from emp in employees
                  where emp.AnnualSalary >= 5000
                  select new
@@ -52,7 +63,7 @@ foreach (var emp in resulQuery)
 
 Console.WriteLine("----------------------EnumerableCollectionExtensionmethods");
 
-var resultExt = from emp in employees.GetHighSalariedEmployees()
+var resultExt = from emp in employees.GetHighSalariedEmployees(50000)
                 select new
                 {
                     FullName = emp.FirstName + emp.LastName,
@@ -64,7 +75,7 @@ employees.Add(new()
     Id = 6,
     FirstName = "Sam",
     LastName = "Witch",
-    AnnualSalary = 100000.2m,
+    AnnualSalary = 500001.2m,
     IsManager = true,
     DepartmentId = 3
 });
@@ -73,6 +84,81 @@ foreach (var emp in resulQuery)
 {
     Console.WriteLine($"{emp.FullName} -  $ {emp.AnnualSalary}");
 }
+
+
+// JOIN------------
+Console.WriteLine("----------------JOIN");
+
+
+var resultJoin = departments.Join(
+    employees, 
+    dep => dep.Id, 
+    emp => emp.DepartmentId, 
+    (dep, emp) => new
+        {
+            FullName = emp.FirstName + emp.LastName,
+            emp.AnnualSalary,
+            DepartmentName = dep.LongName
+        }
+    );
+
+
+foreach (var emp in resultJoin)
+{
+    Console.WriteLine($"{emp.FullName} -  $ {emp.AnnualSalary} - { emp.DepartmentName}");
+}
+
+
+// METHOD SINTAXT
+Console.WriteLine();
+Console.WriteLine("---------------Join Group Inner --- METHOD SINTAXT");
+
+var resultsJoinInner = departments.GroupJoin(
+    employees,
+    dep => dep.Id,
+    emp => emp.DepartmentId,
+    (dep, employessGroup) => new
+        {
+            Employees = employessGroup,
+            DepartmentName = dep.LongName
+        }
+    );
+
+foreach (var item in resultsJoinInner)
+{
+    Console.WriteLine($"Department Name: -  {item.DepartmentName} ");
+    foreach (var emp in item.Employees)
+    {
+        Console.WriteLine($"{emp.FirstName} -  $ {emp.AnnualSalary} ");
+    }
+}
+
+
+
+// QUERY SINTAXT
+Console.WriteLine();
+Console.WriteLine("---------------Join Group Inner --- QUERY SINTAXT");
+
+
+var resultJGQuerySintaxt = from dept in departments
+                           join emp in employees
+                           on dept.Id equals emp.DepartmentId
+                           into employeeGroup
+                           select new
+                           {
+                               Employees = employeeGroup,
+                               DepartmentName = dept.LongName
+                           };
+
+foreach (var item in resultJGQuerySintaxt)
+{
+    Console.WriteLine($"Department Name: -  {item.DepartmentName} ");
+    foreach (var emp in item.Employees)
+    {
+        Console.WriteLine($"{emp.FirstName} -  $ {emp.AnnualSalary} ");
+    }
+}
+
 
 Console.ReadKey();
 
