@@ -2,11 +2,64 @@
 using TCPData;
 using TCPExtensions;
 
-
-// PART 2 LINQ OPERATORS
-
 List<Employee> employees = Data.GetEmployees();
 List<Department> departments = Data.GetDepartments();
+
+
+// PART 3 LINQ OPERATORS
+// METHOD SINTAX 
+Console.WriteLine("METHOD SINTAX - ORDER - THEMBY");
+Console.WriteLine();
+
+var resultsSorting = employees.Join(
+        departments,
+        emp => emp.DepartmentId,
+        dep => dep.Id,
+        (emp, dep) => new
+        {
+            emp.Id,
+            emp.FirstName,
+            emp.LastName,
+            emp.AnnualSalary,
+            emp.DepartmentId,
+            DepartmentName = dep.LongName
+        }).OrderBy(o => o.DepartmentId)
+        .ThenBy(o => o.AnnualSalary);
+
+foreach(var result in resultsSorting)
+{
+    Console.WriteLine($"{result.FirstName} -  $ {result.AnnualSalary} - { result.DepartmentName }");
+}
+
+// QUERY SINTAX
+Console.WriteLine("QUERY SINTAX - ORDER - THEMBY");
+Console.WriteLine();
+
+var resultSortingQuery = from emp in employees
+                         join dep in departments
+                         on emp.DepartmentId equals dep.Id
+                         orderby emp.DepartmentId, emp.AnnualSalary descending
+                         select new
+                         {
+                             emp.Id,
+                             emp.FirstName,
+                             emp.LastName,
+                             emp.AnnualSalary,
+                             emp.DepartmentId,
+                             DepartmentName = dep.LongName
+                         };
+
+
+foreach (var result in resultSortingQuery)
+{
+    Console.WriteLine($"{result.FirstName} -  $ {result.AnnualSalary} - {result.DepartmentName}");
+}
+
+
+Console.ReadKey();
+
+
+// PART 2 LINQ OPERATORS
 
 // Method Syntaxt 
 var results = employees.Select(emp => new
