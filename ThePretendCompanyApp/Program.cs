@@ -1,4 +1,5 @@
-﻿using System.Runtime.Intrinsics.Arm;
+﻿using System.Collections;
+using System.Runtime.Intrinsics.Arm;
 using TCPData;
 using TCPExtensions;
 
@@ -9,7 +10,75 @@ List<Department> departments = Data.GetDepartments();
 // PART 3
 // // LINQ OPERATORS
 
+// ELEMENT OPERATORS
+
+// si no encuentra el item, genera una exception
+var employeeAt = employees.ElementAt(2);
+
+// si no encuentra una coincidencia devuelve null o zero o un 
+// por defecto dependiendo el tipo
+var employeeAtDefault = employees.ElementAtOrDefault(9);
+
+var itemFounded = employees.First(e => e.DepartmentId == 2);
+var itemFoundedDefault = employees.FirstOrDefault(e => e.DepartmentId == 2);
+
+var lastItem = employees.Last(e => e.DepartmentId == 2);
+var lastItemDefault = employees.LastOrDefault(e => e.DepartmentId == 2);
+
+var itemSingle = employees.Single(e => e.DepartmentId == 2);
+var itemSingleDefault = employees.SingleOrDefault(e => e.DepartmentId == 2);
+
+
+
+//FILTER OPERATIONS
+
+ArrayList mixedCollection = Data.GetHeterogeneousDataCollection();
+
+// query
+var stringResult = from s in mixedCollection.OfType<string>()
+                   select s;
+
+// method
+var resultMethod = mixedCollection.OfType<string>();
+
+
+foreach (var item in stringResult)
+{
+    Console.WriteLine(item);
+}
+
+Console.WriteLine();
+
+foreach (var item in resultMethod)
+{
+    Console.WriteLine(item);
+}
+
+//QUANTIFY OPERATORS
+
+var isTrueAll = employees.All(e => e.AnnualSalary > 2000);
+var isTrueAny = employees.Any(e => e.AnnualSalary > 2000);
+
+Employee employeeToSearch = new()
+{
+    Id = 2,
+    FirstName = "Jess",
+    LastName = "Jhonson",
+    AnnualSalary = 2899.9m,
+    IsManager = false,
+    DepartmentId = 2
+};
+
+var containEmployee = employees.Contains(employeeToSearch, new EmployerComparer());
+
+Console.WriteLine($" isTrueAll. {isTrueAll}");
+Console.WriteLine($" isTrueAny. {isTrueAny}");
+Console.WriteLine($" contain. {containEmployee}");
+Console.WriteLine();
+Console.ReadKey();
+
 // GROUP BY OPERATIONS
+// deferred execute
 var resultGroup = from emp in employees
                   orderby emp.DepartmentId
                   group emp by emp.DepartmentId;
@@ -24,6 +93,7 @@ foreach (var result in resultGroup)
 }
 
 // ToLookup Operator
+// immediate execute
 Console.WriteLine();
 Console.WriteLine("---------------ToLookUp");
 var resultGroupToLookUp =employees.OrderBy(e => e.DepartmentId).ToLookup(x => x.DepartmentId);

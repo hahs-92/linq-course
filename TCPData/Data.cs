@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -89,6 +90,36 @@ namespace TCPData
             departments.Add(department);
 
             return departments;
+        }
+
+        public static ArrayList GetHeterogeneousDataCollection()
+        {
+            ArrayList data = new ArrayList();
+
+            data.Add(100);
+            data.Add("Bob Jones");
+            data.Add(2000);
+            data.Add("Bill Hendrick");
+            data.Add(new Employee
+            {
+                Id = 2,
+                FirstName = "Joe",
+                LastName = "Jhonson",
+                AnnualSalary = 2899.9m,
+                IsManager = false,
+                DepartmentId = 2
+            });
+            data.Add(new Employee
+            {
+                Id = 2,
+                FirstName = "Cark",
+                LastName = "Jhonson",
+                AnnualSalary = 3899.9m,
+                IsManager = true,
+                DepartmentId = 2
+            });
+
+            return data;
         }
     }
 }
