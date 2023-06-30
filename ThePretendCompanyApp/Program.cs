@@ -7,6 +7,179 @@ List<Employee> employees = Data.GetEmployees();
 List<Department> departments = Data.GetDepartments();
 
 
+// PART 4
+// Adavance c#
+
+// PROJECTION OPERATIONS
+
+
+
+var resultLet = from emp in employees
+                let Initials = emp.FirstName.Substring(0, 1).ToUpper() + emp.LastName.Substring(0, 1).ToUpper()
+                let AnnualSalaryPlusBonus = (emp.IsManager)
+                    ? emp.AnnualSalary + (emp.AnnualSalary * 0.04m)
+                    : emp.AnnualSalary + (emp.AnnualSalary * 0.02m)
+                where Initials == "AH" || Initials == "JG" && AnnualSalaryPlusBonus > 5000
+                select new
+                {
+                    Initials,
+                    FullName = emp.FirstName + " " + emp.LastName,
+                    AnnualSalaryPlusBonus
+                };
+
+foreach ( var item in resultLet)
+{
+    Console.WriteLine(item);
+}
+
+Console.WriteLine();
+
+
+var resultsInto = from emp in employees
+                  where emp.AnnualSalary > 5000
+                  select emp
+                  into HighEarners
+                  where HighEarners.IsManager == true
+                  select HighEarners;
+
+
+foreach (var item in resultsInto)
+{
+    Console.WriteLine($"into. {item.FirstName}");
+}
+
+Console.WriteLine();
+
+
+// partition operations
+
+// salta los dos primeros
+var resultskip = employees.Skip(2);
+var resultSkipWhile = employees.SkipWhile(e => e.AnnualSalary > 5000);
+
+
+var resultTake = employees.Take(2);
+var resultTakeWhile = employees.TakeWhile(e => e.AnnualSalary > 5000);
+
+
+
+// SET OPERATORS
+
+var integerListDist = new List<int> { 1, 1 ,1, 2, 3, 4, 5, 5, 6, 2};
+var resultDist = integerListDist.Distinct();
+
+foreach (var item in resultDist)
+{
+    Console.WriteLine(item); // 1,2,3,4,5,6
+}
+
+Console.WriteLine();
+
+var intAnotherCollection = new List<int> {1, 2, 6, 7 };
+var resultExcept = integerListDist.Except(intAnotherCollection);
+
+foreach (var item in resultExcept)
+{
+    Console.WriteLine(item); // 3, 4, 5
+}
+
+Console.WriteLine();
+
+
+var resultIntersect = integerListDist.Intersect(intAnotherCollection);
+
+foreach (var item in resultIntersect)
+{
+    Console.WriteLine(item); // 1, 2 ,6
+}
+Console.WriteLine();
+
+// concatena las dos listas, pero no toma en cuenta los valores repetidos
+var resultUnion = integerListDist.Union(intAnotherCollection);
+
+
+foreach (var item in resultUnion)
+{
+    Console.WriteLine(item); // 1,2,3,4,5,6,7 
+}
+
+Console.WriteLine();
+Console.ReadKey();
+
+
+
+// The geneartions operations
+
+var integerListEmpty = new List<int>();
+var isEmpty = integerListEmpty.DefaultIfEmpty(0);
+
+var intCollection = Enumerable.Range(25,20);
+var strCollection = Enumerable.Repeat("Alex", 10);
+
+
+// Agregate OPERATORS
+decimal totalAnnualSalary = employees.Aggregate<Employee, decimal>(0, (totalAnnualSalary, e) =>
+{
+    var bonus = (e.IsManager) ? 0.04m : 0.02m;
+
+    totalAnnualSalary += e.AnnualSalary + (e.AnnualSalary * bonus);
+    return totalAnnualSalary;
+});
+
+string totalAnnualSalaryLabel = employees.Aggregate("Employee Annual Salaries + bonus: ", (label, e) =>
+    {
+        var bonus = (e.IsManager) ? 0.04m : 0.02m;
+
+        label += $"{e.AnnualSalary + (e.AnnualSalary * bonus)}";
+        return label;
+    });
+
+Console.WriteLine($"Total + bonus. {totalAnnualSalary}");
+Console.WriteLine(totalAnnualSalaryLabel);
+
+
+var average = employees.Average(e => e.AnnualSalary);
+Console.WriteLine($"Average: {average}");
+
+var countEmployees = employees.Count(e => e.DepartmentId == 2);
+Console.WriteLine($"Count: {countEmployees}");
+
+var sum = employees.Sum(e => e.AnnualSalary);
+Console.WriteLine($"Sum: {sum}");
+
+var maxSalary = employees.Max(e => e.AnnualSalary);
+Console.WriteLine($"MaxSalary: {maxSalary}");
+
+
+Console.ReadKey();
+
+
+
+// EQUALITY OPERATORS
+
+var integerListConcat = new List<int> { 1, 2, 3, 4, 5 };
+var integerListConcat2 = new List<int> { 6,7,8,9,10 };
+
+var resultConcat = integerListConcat.Concat(integerListConcat2);
+foreach(var item in  resultConcat)
+{
+    Console.Write(item);
+}
+
+Console.WriteLine();
+
+var integerList = new List<int>{ 1, 2, 3, 4, 5, 6, 7, 8 };
+var integerList2 = new List<int>{ 1, 2, 3, 4, 5, 6, 7, 8 };
+
+var isSecuenceEqual = integerList.SequenceEqual(integerList2); // true
+
+var employeesToCompare = Data.GetEmployees();
+var isSecuenceEmp = employees.SequenceEqual(employeesToCompare, new EmployerComparer()); // true
+
+Console.WriteLine($"Secuencies: {isSecuenceEqual } - {isSecuenceEmp}");
+Console.WriteLine();
+
+Console.ReadKey();
 // PART 3
 // // LINQ OPERATORS
 
