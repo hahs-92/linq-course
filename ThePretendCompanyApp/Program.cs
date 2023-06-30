@@ -108,7 +108,7 @@ Console.ReadKey();
 
 
 
-// The geneartions operations
+// The generations operations
 
 var integerListEmpty = new List<int>();
 var isEmpty = integerListEmpty.DefaultIfEmpty(0);
@@ -266,7 +266,6 @@ foreach (var result in resultGroup)
 }
 
 // ToLookup Operator
-// immediate execute
 Console.WriteLine();
 Console.WriteLine("---------------ToLookUp");
 var resultGroupToLookUp =employees.OrderBy(e => e.DepartmentId).ToLookup(x => x.DepartmentId);
@@ -488,9 +487,7 @@ foreach (var item in resultJGQuerySintaxt)
     }
 }
 
-
 Console.ReadKey();
-
 
 
 
